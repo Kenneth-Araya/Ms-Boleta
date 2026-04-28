@@ -18,7 +18,7 @@ public class BoletaService {
     
     private final BoletaRepository boletaRepository;
 
-    public List<BoletaDTO> obtenerTodasLasBoletas(){
+    public List<BoletaDTO> listarTodos(){
         
         List<Boleta> boletas = boletaRepository.findAll();
         List<BoletaDTO> boletaDTOs = new ArrayList<>();
@@ -40,7 +40,7 @@ public class BoletaService {
         return BoletaDTOMapper.toDTO(boleta);
     }
 
-    public boolean agregarBoleta(BoletaDTO boletaDTO){
+    public boolean guardarBoleta(BoletaDTO boletaDTO){
 
         if (boletaDTO == null || boletaDTO.getFolio() == null || boletaDTO.getFolio().isEmpty()) {
             throw new IllegalArgumentException("La boleta o su número de folio no pueden ser nulos o vacíos");

@@ -24,23 +24,16 @@ public class BoletaController {
 
     //Listar todos
     @GetMapping()
-    public ResponseEntity<List<BoletaDTO>> obtenerTodasLasBoletas() {
-        List<BoletaDTO> boletaDTOs = boletaService.obtenerTodasLasBoletas();
+    public ResponseEntity<List<BoletaDTO>> listarTodos() {
+        List<BoletaDTO> boletaDTOs = boletaService.listarTodos();
         return ResponseEntity
         .ok(boletaDTOs);
     }
 
-    //Obtener boleta por folio
-    @GetMapping("/{folio}")
-    public ResponseEntity<BoletaDTO> obtenerBoletaPorFolio(@PathVariable String folio) {
-        return ResponseEntity
-        .ok(boletaService.obtenerBoletaPorFolio(folio));
-    }
-
     //Crear boleta
     @PostMapping()
-    public ResponseEntity<BoletaDTO> agregarBoleta (@Valid @RequestBody BoletaDTO boletaDTO) {
-        boletaService.agregarBoleta(boletaDTO);
+    public ResponseEntity<BoletaDTO> guardarBoleta(@Valid @RequestBody BoletaDTO boletaDTO) {
+        boletaService.guardarBoleta(boletaDTO);
         return ResponseEntity
         .ok(boletaDTO);
     }
@@ -50,14 +43,23 @@ public class BoletaController {
     public ResponseEntity<Void> eliminarBoleta (@PathVariable String folio) {
         boletaService.eliminarBoleta(folio);
         return ResponseEntity
-        .noContent().build();
+        .noContent()
+        .build();
     }
     
     //Actualizar boleta
     @PutMapping("/{folio}")
     public ResponseEntity<BoletaDTO> actualizaBoleta (@PathVariable String folio, @Valid @RequestBody BoletaDTO boletaDTO) {
         boletaService.actualizarBoleta(folio, boletaDTO);
-        return ResponseEntity.ok(boletaDTO);
+        return ResponseEntity
+        .ok(boletaDTO);
+    }
+
+    //Obtener boleta por folio
+    @GetMapping("/{folio}")
+    public ResponseEntity<BoletaDTO> obtenerBoletaPorFolio(@PathVariable String folio) {
+        return ResponseEntity
+        .ok(boletaService.obtenerBoletaPorFolio(folio));
     }
 }
 

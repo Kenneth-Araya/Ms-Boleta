@@ -22,31 +22,38 @@ public class BoletaController {
 
     private final BoletaService boletaService;
 
+    //Listar todos
     @GetMapping()
     public ResponseEntity<List<BoletaDTO>> obtenerTodasLasBoletas() {
-
         List<BoletaDTO> boletaDTOs = boletaService.obtenerTodasLasBoletas();
-
-        return ResponseEntity.ok(boletaDTOs);
+        return ResponseEntity
+        .ok(boletaDTOs);
     }
 
+    //Obtener boleta por folio
     @GetMapping("/{folio}")
     public ResponseEntity<BoletaDTO> obtenerBoletaPorFolio(@PathVariable String folio) {
-        return ResponseEntity.ok(boletaService.obtenerBoletaPorFolio(folio));
+        return ResponseEntity
+        .ok(boletaService.obtenerBoletaPorFolio(folio));
     }
 
+    //Crear boleta
     @PostMapping()
     public ResponseEntity<BoletaDTO> agregarBoleta (@Valid @RequestBody BoletaDTO boletaDTO) {
         boletaService.agregarBoleta(boletaDTO);
-        return ResponseEntity.ok(boletaDTO);
+        return ResponseEntity
+        .ok(boletaDTO);
     }
 
+    //Eliminar boleta
     @DeleteMapping("/{folio}")
     public ResponseEntity<Void> eliminarBoleta (@PathVariable String folio) {
         boletaService.eliminarBoleta(folio);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity
+        .noContent().build();
     }
     
+    //Actualizar boleta
     @PutMapping("/{folio}")
     public ResponseEntity<BoletaDTO> actualizaBoleta (@PathVariable String folio, @Valid @RequestBody BoletaDTO boletaDTO) {
         boletaService.actualizarBoleta(folio, boletaDTO);

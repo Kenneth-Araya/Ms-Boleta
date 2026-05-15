@@ -1,15 +1,8 @@
 package cl.duoc.sistemaMarket.dto;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import cl.duoc.sistemaMarket.model.Boleta;
-import cl.duoc.sistemaMarket.model.Proveedor;
-import cl.duoc.sistemaMarket.service.ProveedorService;
 
 public class BoletaDTOMapper {
     
-    @Autowired
-    private static ProveedorService proveedorService;
-
     public static BoletaDTO toDTO(Boleta boleta){
         if (boleta == null) {
             return null;
@@ -17,7 +10,6 @@ public class BoletaDTOMapper {
 
         BoletaDTO boletaDTO = new BoletaDTO();
         boletaDTO.setFolio(boleta.getFolio());
-        boletaDTO.setRutProveedor(boleta.getProveedor().getRut());
         boletaDTO.setGlosa(boleta.getGlosa());
         boletaDTO.setTipo(boleta.getTipo());
         boletaDTO.setFecha(boleta.getFechaEmision());
@@ -31,11 +23,9 @@ public class BoletaDTOMapper {
             return null;
         }
 
-        Proveedor proveedor = proveedorService.findByRutProveedor(boletaDTO.getRutProveedor());
 
         Boleta boleta = new Boleta();
         boleta.setFolio(boletaDTO.getFolio());
-        boleta.setProveedor(proveedor);
         boleta.setGlosa(boletaDTO.getGlosa());
         boleta.setTipo(boletaDTO.getTipo());
         boleta.setFechaEmision(boletaDTO.getFecha());

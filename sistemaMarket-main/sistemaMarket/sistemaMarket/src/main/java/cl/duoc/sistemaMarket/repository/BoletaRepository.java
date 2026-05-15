@@ -7,7 +7,7 @@ import cl.duoc.sistemaMarket.model.Boleta;
 @Repository
 public interface BoletaRepository extends JpaRepository<Boleta, Long> {
 
-    Boleta findByFolio(String folio);
+    Boleta findByFolioBoleta(String folio);
 
-    void deleteByFolio(String folio);
+    void deleteByFolioBoleta(String folio);
 }

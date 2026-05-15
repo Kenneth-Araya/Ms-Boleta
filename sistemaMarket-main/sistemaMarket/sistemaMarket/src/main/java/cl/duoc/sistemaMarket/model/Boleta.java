@@ -24,23 +24,23 @@ public class Boleta {
     private Long id;
 
     @Column(nullable = false, length = 100)
-    private String folio;
+    private String folioBoleta;
 
     @Column(nullable = false, length = 100)
-    private String glosa;
+    private String glosaBoleta;
 
     @Column(nullable = false, length = 100)
-    private String tipo;
+    private String tipoBoleta;
 
     @Column(nullable = false, length = 100)
-    private LocalDate fechaEmision;
+    private LocalDate fechaEmisionBoleta;
 
     @Column(nullable = false, length = 100)
-    private int montoBruto;
+    private int montoBrutoBoleta;
 
     @Column(nullable = false, length = 100)
-    private int montoNeto;
+    private int montoNetoBoleta;
 
     @Column(nullable = false, length = 100)
-    private String estado;
+    private String estadoBoleta;
 }
